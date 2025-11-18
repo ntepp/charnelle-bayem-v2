@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hommage à Charnelle</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- NAVIGATION -->
+<nav>
+    <div class="menu">
+        <a href="#fairepart">Faire-part</a>
+        <a href="#biographie">Biographie</a>
+        <a href="#temoignages">Témoignages</a>
+        <a href="#cantiques">Cantiques</a>
+        <a href="#roses">Déposer une rose</a>
+    </div>
+</nav>
+
+<!-- FAIRE-PART -->
+<section id="fairepart" class="section">
+    <h1>Faire-part</h1>
+    <img src="CHA.jpeg" class="portrait" alt="Charnelle">
+    <p>La famille <strong>Bayem</strong> annonce le départ de leur chère petite-fille, fille, sœur et mère : </p>
+    <h2>NGOBI BAYEM S. Charnelle</h2>
+</section>
+
+<!-- BIOGRAPHIE -->
+<section id="biographie" class="section">
+    <h1>Biographie</h1>
+    <p>Ajoutez ici l’histoire de vie, le parcours et la biographie de Charnelle.</p>
+</section>
+
+<!-- TEMOIGNAGES -->
+<section id="temoignages" class="section">
+    <h1>Livre d'or - Témoignages</h1>
+    <textarea id="temoin" rows="4" placeholder="Écrivez votre message..."></textarea><br>
+    <button class="btn" onclick="ajouterTemoignage()">Publier</button>
+    <div id="liste-temoignages"></div>
+</section>
+
+<!-- CANTIQUES -->
+<section id="cantiques" class="section">
+    <h1>Recueil de Cantiques</h1>
+    <h3>Cantique 1 : "Quand le soir descend"</h3>
+    <p>Paroles du cantique…</p>
+    <h3>Cantique 2 : "Près de toi Seigneur"</h3>
+    <p>Paroles du cantique…</p>
+</section>
+
+<!-- DEPOSER UNE ROSE -->
+<section id="roses" class="section">
+    <h1>Déposer une rose</h1>
+    <button class="btn-rose" onclick="deposerRose()">
+        <img src="https://cdn-icons-png.flaticon.com/512/2965/2965567.png" class="icon" alt="rose"> Ajouter une rose
+    </button>
+    <div id="rose-zone"></div>
+</section>
+
+<script>
+// TEMOIGNAGES
+function ajouterTemoignage() {
+    const texte = document.getElementById("temoin").value.trim();
+    if (!texte) return;
+    const zone = document.getElementById("liste-temoignages");
+    const p = document.createElement("p");
+    p.textContent = texte;
+    p.className = "message";
+    zone.appendChild(p);
+    document.getElementById("temoin").value = "";
+}
+
+// ROSES
+let compteurRose = 0;
+function deposerRose() {
+    compteurRose++;
+    const zone = document.getElementById("rose-zone");
+    const div = document.createElement("div");
+    div.className = "rose";
+    div.innerHTML = `<p>Rose #${compteurRose}</p>`;
+    zone.appendChild(div);
+}
+</script>
+
+</body>
+</html>
