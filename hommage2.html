@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hommage à Charnelle</title>
+
+    <!-- Lien vers le CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<nav>
+    <a href="#accueil">Accueil</a>
+    <a href="#fairepart">Faire-part</a>
+    <a href="#programme">Programme</a>
+    <a href="#adieux">Adieux</a>
+    <a href="#fleurs">Offrir une fleur</a>
+    <a href="#localisation">Localisation</a>
+</nav>
+
+<section id="accueil" class="section">
+    <h1>Hommage à NGOBI BAYEM Suzie Charnelle</h1>
+    <img src="char.jpeg" class="photo" alt="Charnelle">
+    <h2>« Une fille spéciale, une sœur aimante et une mère dévouée »</h2>
+</section>
+
+<section id="fairepart" class="section">
+    <h1>Faire-part</h1>
+    <p>
+        La grande famille <strong>Bayeka</strong>, la famille <strong>Bayem</strong>, 
+        la famille <strong>Dalle</strong> et la famille <strong>Ndje</strong>
+        annoncent avec une profonde tristesse le rappel à Dieu de :
+    </p>
+    <h2><strong>NGOBI BAYEM Suzie Charnelle</strong></h2>
+</section>
+
+<section id="programme" class="section">
+    <h1>Programme des obsèques</h1>
+    <ul style="list-style:none; padding:0; line-height:2;">
+        <li>📌 Veillée — Date / Heure</li>
+        <li>📌 Levée de corps — Date / Heure</li>
+        <li>📌 Culte / Messe — Date / Heure</li>
+        <li>📌 Inhumation — Date / Heure</li>
+    </ul>
+</section>
+
+<section id="adieux" class="section">
+    <h1>Adieux et messages</h1>
+    <textarea id="message" rows="4" placeholder="Votre message d’adieu..."></textarea>
+    <button onclick="ajouterMessage()">Envoyer</button>
+    <div id="messages"></div>
+</section>
+
+<section id="fleurs" class="section">
+    <h1>Offrir une fleur 🌸</h1>
+    <button onclick="ajouterFleur()">Déposer une fleur</button>
+    <h3 id="compteur">Fleurs offertes : 0</h3>
+    <div id="fleurs-zone"></div>
+</section>
+
+<section id="localisation" class="section">
+    <h1>Localisation</h1>
+    <div id="map">
+        <iframe 
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3979.757010844236!2d11.5021!3d3.8480"
+            width="100%" height="100%" style="border:0;" allowfullscreen loading="lazy">
+        </iframe>
+    </div>
+</section>
+
+<!-- JavaScript intégré (plus besoin d'un fichier séparé) -->
+<script>
+let compteur = 0;
+
+function ajouterFleur() {
+    const zone = document.getElementById("fleurs-zone");
+    const img = document.createElement("img");
+
+    img.src = "https://cdn-icons-png.flaticon.com/512/616/616430.png";
+    img.style.width = "60px";
+    img.style.margin = "8px";
+
+    zone.appendChild(img);
+
+    compteur++;
+    document.getElementById("compteur").textContent = "Fleurs offertes : " + compteur;
+}
+
+function ajouterMessage() {
+    const txt = document.getElementById("message").value.trim();
+    if (!txt) return;
+
+    const div = document.getElementById("messages");
+    const p = document.createElement("p");
+    p.style.background = "#ffecec";
+    p.style.padding = "10px";
+    p.style.borderRadius = "10px";
+    p.style.marginTop = "10px";
+    p.textContent = txt;
+
+    div.appendChild(p);
+    document.getElementById("message").value = "";
+}
+</script>
+
+</body>
+</html>
