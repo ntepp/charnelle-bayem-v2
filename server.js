@@ -8,7 +8,12 @@ const app = express();
 // Middleware
 app.use(cors());
 app.use(express.json());
-app.use(express.static(__dirname));
+
+// Servir les fichiers statiques (doit être avant les routes)
+app.use(express.static(__dirname, {
+    index: false, // Ne pas servir index.html automatiquement
+    extensions: ['html', 'css', 'js', 'jpeg', 'jpg', 'png', 'gif', 'svg', 'ico']
+}));
 
 // Chemins des fichiers de base de données
 // Sur Vercel, utiliser /tmp pour l'écriture, sinon utiliser __dirname
@@ -113,6 +118,31 @@ app.post('/api/fleurs', (req, res) => {
     } else {
         res.status(500).json({ error: 'Erreur lors de la sauvegarde' });
     }
+});
+
+// Routes explicites pour les fichiers statiques (fallback)
+app.get('/style.css', (req, res) => {
+    res.sendFile(path.join(__dirname, 'style.css'), {
+        headers: { 'Content-Type': 'text/css' }
+    });
+});
+
+app.get('/rose.jpeg', (req, res) => {
+    res.sendFile(path.join(__dirname, 'rose.jpeg'), {
+        headers: { 'Content-Type': 'image/jpeg' }
+    });
+});
+
+app.get('/char.jpeg', (req, res) => {
+    res.sendFile(path.join(__dirname, 'char.jpeg'), {
+        headers: { 'Content-Type': 'image/jpeg' }
+    });
+});
+
+app.get('/plan-de-localisation.jpeg', (req, res) => {
+    res.sendFile(path.join(__dirname, 'plan-de-localisation.jpeg'), {
+        headers: { 'Content-Type': 'image/jpeg' }
+    });
 });
 
 // Route pour servir index.html
