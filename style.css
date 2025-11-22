@@ -25,6 +25,48 @@ nav a {
     color: #aa6a6a;
 }
 
+/* Styles pour le lecteur audio */
+.audio-player-container {
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+    background: rgba(255, 240, 240, 0.6);
+    border-bottom: 2px solid #e6bcbc;
+}
+
+.audio-player {
+    max-width: 600px;
+    width: 90%;
+    background: #fff;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.audio-player h3 {
+    color: #a45050;
+    margin: 0 0 15px 0;
+    font-size: 1.2em;
+}
+
+.audio-player audio {
+    width: 100%;
+    max-width: 550px;
+    outline: none;
+}
+
+.audio-player audio::-webkit-media-controls-panel {
+    background-color: #ffcccc;
+}
+
+.audio-player audio::-webkit-media-controls-play-button,
+.audio-player audio::-webkit-media-controls-timeline,
+.audio-player audio::-webkit-media-controls-current-time-display,
+.audio-player audio::-webkit-media-controls-time-remaining-display {
+    filter: invert(20%);
+}
+
 .section {
     width: 85%;
     max-width: 900px;

@@ -10,7 +10,10 @@ app.use(cors());
 app.use(express.json());
 
 // Servir les fichiers statiques (doit être avant les routes)
-app.use(express.static(__dirname, { index: false }));
+app.use(express.static(__dirname, {
+    index: false, // Ne pas servir index.html automatiquement
+    extensions: ['html', 'css', 'js', 'jpeg', 'jpg', 'png', 'gif', 'svg', 'ico']
+}));
 
 // Chemins des fichiers de base de données
 // Sur Vercel, utiliser /tmp pour l'écriture, sinon utiliser __dirname
@@ -139,6 +142,12 @@ app.get('/char.jpeg', (req, res) => {
 app.get('/plan-de-localisation.jpeg', (req, res) => {
     res.sendFile(path.join(__dirname, 'plan-de-localisation.jpeg'), {
         headers: { 'Content-Type': 'image/jpeg' }
+    });
+});
+
+app.get('/jesus.mp3', (req, res) => {
+    res.sendFile(path.join(__dirname, 'jesus.mp3'), {
+        headers: { 'Content-Type': 'audio/mpeg' }
     });
 });
 
